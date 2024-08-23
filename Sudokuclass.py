@@ -74,29 +74,30 @@ class Sudoku:
         return True
     
     def check_opcion(self):     # chequea si se puede aplicar la jugada en el campo
-        tablero_fut = copy.deepcopy(self.tablero)
-        tablero_fut[self.pos_ag[0]-1][self.pos_ag[1]-1] = self.num_ag
         
-        for i in tablero_fut:
+        self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = self.num_ag
+        
+        for i in self.tablero:
             i_0 = [x for x in i if x != 0]
             if len(i_0) != len(set(i_0)):
-                print("error en columnas")
+                self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = 0
                 return (False, 1)
         
-        for i in range(len(tablero_fut)):
-            i_0 = [col[i] for col in tablero_fut if col[i] !=0 ]
+        for i in range(len(self.tablero)):
+            i_0 = [col[i] for col in self.tablero if col[i] !=0 ]
             if len(i_0) != len(set(i_0)):
-                print("error en filas")
+                self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = 0
                 return (False,2  )     
             
         for i in range(3):
             for j in range(3):
-                i_0 = [x for x in (tablero_fut[i*3+0][j*3:j*3+3]+
-                                   tablero_fut[i*3+1][j*3:j*3+3]+
-                                   tablero_fut[i*3+2][j*3:j*3+3])   if x != 0]
+                i_0 = [x for x in (self.tablero[i*3+0][j*3:j*3+3]+
+                                   self.tablero[i*3+1][j*3:j*3+3]+
+                                   self.tablero[i*3+2][j*3:j*3+3])   if x != 0]
                 if len(i_0) != len(set(i_0)):
-                    print("error en bloques 3x3")
+                    self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = 0
                     return (False,3)
+        self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = 0
         return (True,0)
         
     
