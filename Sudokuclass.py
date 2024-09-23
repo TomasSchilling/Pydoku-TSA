@@ -100,7 +100,7 @@ class Sudoku:
         self.tablero[self.pos_ag[0]-1][self.pos_ag[1]-1] = 0
         return (True,0)
         
-    
+  
         
     
     def play(self):   # actualiza el numero en el tablero

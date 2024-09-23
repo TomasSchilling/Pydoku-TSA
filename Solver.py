@@ -93,7 +93,7 @@ def rell_M1_2(sud):
             return sud
             
         b =np.array( copy.deepcopy(sud.tablero))  
-    return sud.tablero
+    return sud
 
 def rell_M3(sud):   # Metodo 3 a la fuerza bruta
     for i in range(9):
@@ -106,14 +106,14 @@ def rell_M3(sud):   # Metodo 3 a la fuerza bruta
                     if sud.check_opcion()[0]:  
                         sud.tablero[j][i] = k  
                         if sud.ganar():  
-                            return sud.tablero
+                            return sud
                         if rell_M3(sud):
-                            return sud.tablero
+                            return sud
                     sud.tablero[j][i] = 0
                 
                 return False
     
-    return sud.tablero  
+    return sud  
 
 
 

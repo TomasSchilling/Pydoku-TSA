@@ -16,7 +16,7 @@ def num_left(mapa):
 
     return numbers_left
     
-def GAMING(b):
+def GAMING(b,b_solved):
     
     sud=Sudoku(copy.deepcopy(b))
     gano = True
@@ -111,6 +111,11 @@ def GAMING(b):
                 mouse_pos = pygame.mouse.get_pos()
                 #print(mouse_pos)
                 
+                if mouse_pos[0]>600 and 400<mouse_pos[1]<500:
+                    print(1111)
+                    pygame.draw.rect(screen, colors[1], (610, 410, 180, 90))
+                    timer_text = font.render("Hint", True, colors[0])       
+                    screen.blit(timer_text, (650, 450))
                 
                 if mouse_pos[0]<600 and mouse_pos[1]<600:       #si el mouse se encuentra en zona de juego
                     sud.agregar_pos( ( int(round(mouse_pos[0]*9/600+0.5,0)),int(round(mouse_pos[1]*9/600+0.5,0))    ))
